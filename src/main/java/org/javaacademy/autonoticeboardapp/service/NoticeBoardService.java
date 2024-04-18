@@ -4,7 +4,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.javaacademy.autonoticeboardapp.dto.NoticeDto;
 import org.javaacademy.autonoticeboardapp.entity.Auto;
-import org.javaacademy.autonoticeboardapp.dto.AutoFilterDto;
+import org.javaacademy.autonoticeboardapp.entity.AutoFilter;
 import org.javaacademy.autonoticeboardapp.entity.Notice;
 import org.javaacademy.autonoticeboardapp.repository.NoticeBoardRepository;
 import org.springframework.stereotype.Service;
@@ -70,7 +70,7 @@ public class NoticeBoardService {
 		noticeBoardRepository.deleteNoticeByUUID(uuid);
 	}
 
-	public Set<Notice> getNoticeByFilter(AutoFilterDto autoFilterDto) {
-		return noticeBoardRepository.getNoticeByFilter(autoFilterDto);
+	public Set<Notice> getNoticeByFilter(AutoFilter autoFilter) {
+		return noticeBoardRepository.getNoticeByFilter(autoFilter);
 	}
 }

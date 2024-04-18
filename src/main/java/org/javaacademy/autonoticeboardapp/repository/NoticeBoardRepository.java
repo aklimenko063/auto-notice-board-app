@@ -2,7 +2,7 @@ package org.javaacademy.autonoticeboardapp.repository;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import org.javaacademy.autonoticeboardapp.dto.AutoFilterDto;
+import org.javaacademy.autonoticeboardapp.entity.AutoFilter;
 import org.javaacademy.autonoticeboardapp.entity.Notice;
 import org.springframework.stereotype.Repository;
 import java.time.LocalDate;
@@ -38,13 +38,12 @@ public class NoticeBoardRepository {
 		}
 	}
 
-	public Set<Notice> getNoticeByFilter(AutoFilterDto autoFilterDto) {
+	public Set<Notice> getNoticeByFilter(AutoFilter autoFilter) {
 		ObjectMapper objectMapper = new ObjectMapper();
 		Map<String, Object> mapFilter = objectMapper
-				.convertValue(autoFilterDto, new TypeReference<Map<String, Object>>() {});
+				.convertValue(autoFilter, new TypeReference<Map<String, Object>>() {});
 		Set<Notice> filteredAutos = new HashSet<>(noticeRepo);
 		for (Map.Entry<String, Object> filter : mapFilter.entrySet()) {
-			System.out.println(filter);
 			filteredAutos = findByMapFilter(filter.getKey(), filter.getValue(), filteredAutos);
 		}
 		return filteredAutos;

@@ -2,7 +2,7 @@ package org.javaacademy.autonoticeboardapp.controller;
 
 import lombok.RequiredArgsConstructor;
 import org.javaacademy.autonoticeboardapp.dto.NoticeDto;
-import org.javaacademy.autonoticeboardapp.dto.AutoFilterDto;
+import org.javaacademy.autonoticeboardapp.entity.AutoFilter;
 import org.javaacademy.autonoticeboardapp.entity.Notice;
 import org.javaacademy.autonoticeboardapp.service.NoticeBoardService;
 import org.springframework.http.ResponseEntity;
@@ -43,8 +43,8 @@ public class NoticeBoardController {
 	                               @RequestParam(required = false) String color,
 	                               @RequestParam(required = false) String model,
 	                               @RequestParam(required = false) BigDecimal price) {
-		AutoFilterDto autoFilterDto = new AutoFilterDto(brandName, color, model, price);
-		return noticeBoardService.getNoticeByFilter(autoFilterDto);
+		AutoFilter autoFilter = new AutoFilter(brandName, color, model, price);
+		return noticeBoardService.getNoticeByFilter(autoFilter);
 	}
 
 	@DeleteMapping("/delete={uuid}")

@@ -1,10 +1,10 @@
-package org.javaacademy.autonoticeboardapp.dto;
+package org.javaacademy.autonoticeboardapp.entity;
 
 import lombok.Value;
 import java.math.BigDecimal;
 
 @Value
-public class AutoFilterDto {
+public class AutoFilter {
 	String brandName;
 	String color;
 	String model;
