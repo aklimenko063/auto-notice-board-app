@@ -1,0 +1,5 @@
+spring:
+  application: name=auto-notice-board-app
+
+server:
+  port: 8003
